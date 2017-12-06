@@ -36,11 +36,20 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Internal.cs" />
+    <Compile Include="Code\DataGridViewSortInformation.cs" />
+    <Compile Include="Views\Books\ListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Books\ListForm.Designer.cs">
+      <DependentUpon>ListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +68,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Books\ListForm.resx">
+      <DependentUpon>ListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +104,32 @@
       <Project>{9e776f4a-40c0-4fbb-b8f7-cee377bcc687}</Project>
       <Name>Nameless.Bookshelf.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Authors\" />
+    <Folder Include="Views\Languages\" />
+    <Folder Include="Views\Publishers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\author_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\language_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publisher_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_settings_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_20x20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

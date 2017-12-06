@@ -35,7 +35,12 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\SaveBook.cs" />
+    <Compile Include="Dto\BookDto.cs" />
+    <Compile Include="Entities\Book.cs" />
+    <Compile Include="Exceptions\BookOwnerException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\ListBooks.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\WinFormsApplication\src\Nameless.WinFormsApplication.Auth\Nameless.WinFormsApplication.Auth.csproj">
