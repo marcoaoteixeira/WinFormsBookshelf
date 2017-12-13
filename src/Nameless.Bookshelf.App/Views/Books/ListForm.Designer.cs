@@ -25,11 +25,11 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.searchForButton = new System.Windows.Forms.Button();
+            this.searchForTextBox = new System.Windows.Forms.TextBox();
+            this.searchForLabel = new System.Windows.Forms.Label();
             this.separatorLabel = new System.Windows.Forms.Label();
             this.resultPanel = new System.Windows.Forms.Panel();
-            this.searchForLabel = new System.Windows.Forms.Label();
-            this.searchForTextBox = new System.Windows.Forms.TextBox();
-            this.searchForButton = new System.Windows.Forms.Button();
             this.mainDataGridView = new System.Windows.Forms.DataGridView();
             this.mainContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +90,36 @@
             this.filterPanel.Size = new System.Drawing.Size(784, 72);
             this.filterPanel.TabIndex = 0;
             // 
+            // searchForButton
+            // 
+            this.searchForButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchForButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchForButton.Image = global::Nameless.Bookshelf.Properties.Resources.search_20x20;
+            this.searchForButton.Location = new System.Drawing.Point(732, 20);
+            this.searchForButton.Name = "searchForButton";
+            this.searchForButton.Size = new System.Drawing.Size(32, 32);
+            this.searchForButton.TabIndex = 1;
+            this.searchForButton.UseVisualStyleBackColor = true;
+            this.searchForButton.Click += new System.EventHandler(this.searchForButton_Click);
+            // 
+            // searchForTextBox
+            // 
+            this.searchForTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchForTextBox.Location = new System.Drawing.Point(117, 22);
+            this.searchForTextBox.Name = "searchForTextBox";
+            this.searchForTextBox.Size = new System.Drawing.Size(609, 29);
+            this.searchForTextBox.TabIndex = 0;
+            // 
+            // searchForLabel
+            // 
+            this.searchForLabel.AutoSize = true;
+            this.searchForLabel.Location = new System.Drawing.Point(13, 25);
+            this.searchForLabel.Name = "searchForLabel";
+            this.searchForLabel.Size = new System.Drawing.Size(98, 21);
+            this.searchForLabel.TabIndex = 0;
+            this.searchForLabel.Text = "Procurar por";
+            // 
             // separatorLabel
             // 
             this.separatorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -111,36 +141,6 @@
             this.resultPanel.Size = new System.Drawing.Size(784, 307);
             this.resultPanel.TabIndex = 0;
             // 
-            // searchForLabel
-            // 
-            this.searchForLabel.AutoSize = true;
-            this.searchForLabel.Location = new System.Drawing.Point(13, 25);
-            this.searchForLabel.Name = "searchForLabel";
-            this.searchForLabel.Size = new System.Drawing.Size(98, 21);
-            this.searchForLabel.TabIndex = 0;
-            this.searchForLabel.Text = "Procurar por";
-            // 
-            // searchForTextBox
-            // 
-            this.searchForTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchForTextBox.Location = new System.Drawing.Point(117, 22);
-            this.searchForTextBox.Name = "searchForTextBox";
-            this.searchForTextBox.Size = new System.Drawing.Size(609, 29);
-            this.searchForTextBox.TabIndex = 0;
-            // 
-            // searchForButton
-            // 
-            this.searchForButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchForButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchForButton.Image = global::Nameless.Bookshelf.Properties.Resources.search_20x20;
-            this.searchForButton.Location = new System.Drawing.Point(732, 20);
-            this.searchForButton.Name = "searchForButton";
-            this.searchForButton.Size = new System.Drawing.Size(32, 32);
-            this.searchForButton.TabIndex = 1;
-            this.searchForButton.UseVisualStyleBackColor = true;
-            this.searchForButton.Click += new System.EventHandler(this.searchForButton_Click);
-            // 
             // mainDataGridView
             // 
             this.mainDataGridView.AllowUserToAddRows = false;
@@ -149,6 +149,8 @@
             this.mainDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDataGridView.Location = new System.Drawing.Point(10, 10);
             this.mainDataGridView.Name = "mainDataGridView";
+            this.mainDataGridView.RowTemplate.Height = 30;
+            this.mainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.mainDataGridView.Size = new System.Drawing.Size(764, 287);
             this.mainDataGridView.TabIndex = 2;
             this.mainDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDataGridView_ColumnHeaderMouseClick);

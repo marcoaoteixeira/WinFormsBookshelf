@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Windows.Forms;
+using Nameless.WinFormsApplication;
+using Nameless.WinFormsApplication.Views;
 
 namespace Nameless.Bookshelf.Views {
 
     public partial class MainForm : Form {
 
+        #region Private Properties
+
+        private ViewManager ViewManager { get; }
+
+        #endregion Private Properties
+
         #region Public Constructors
 
-        public MainForm() {
+        public MainForm(ViewManager viewManager) {
+            Prevent.ParameterNull(viewManager, nameof(viewManager));
+
+            ViewManager = viewManager;
+
             InitializeComponent();
         }
 
@@ -20,7 +32,7 @@ namespace Nameless.Bookshelf.Views {
             softwareVersionToolStripStatusLabel.Text = Internal.SoftwareVersion;
         }
 
-        #endregion
+        #endregion Private Methods
 
         #region Components Event-Handlers
 
@@ -29,6 +41,10 @@ namespace Nameless.Bookshelf.Views {
         }
 
         private void booksToolStripMenuItem_Click(object sender, EventArgs e) {
+            ViewManager.Get<Books.ListForm>(
+                mdi: this,
+                multipleInstance: false
+            ).Show();
         }
 
         private void publishersToolStripMenuItem_Click(object sender, EventArgs e) {

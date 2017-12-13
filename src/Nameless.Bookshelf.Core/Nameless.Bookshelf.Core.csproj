@@ -30,15 +30,56 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MongoDB.Bson.2.5.0\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MongoDB.Driver.2.5.0\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MongoDB.Driver.Core.2.5.0\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.4.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Commands\SaveBook.cs" />
+    <Compile Include="Dto\LanguageDto.cs" />
+    <Compile Include="Dto\OwnerDto.cs" />
+    <Compile Include="Dto\PublisherDto.cs" />
+    <Compile Include="Dto\AuthorDto.cs" />
     <Compile Include="Dto\BookDto.cs" />
+    <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Book.cs" />
+    <Compile Include="Entities\Author.cs" />
+    <Compile Include="Entities\Publisher.cs" />
     <Compile Include="Exceptions\BookOwnerException.cs" />
+    <Compile Include="Indexes\LanguageIndexRegistration.cs" />
+    <Compile Include="Indexes\AuthorIndexRegistration.cs" />
+    <Compile Include="Indexes\PublisherIndexRegistration.cs" />
+    <Compile Include="Indexes\BookIndexRegistration.cs" />
+    <Compile Include="Mappings\PublisherMappingRegistration.cs" />
+    <Compile Include="Mappings\EntityBaseMappingRegistration.cs" />
+    <Compile Include="Mappings\SecureDataMappingRegistration.cs" />
+    <Compile Include="Mappings\BookMappingRegistration.cs" />
+    <Compile Include="Mappings\UserMappingRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\ListBooks.cs" />
   </ItemGroup>
@@ -55,6 +96,10 @@
       <Project>{84bd0e34-0f79-4719-bb4a-faae04e53856}</Project>
       <Name>Nameless.WinFormsApplication.Persistence.MongoDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
