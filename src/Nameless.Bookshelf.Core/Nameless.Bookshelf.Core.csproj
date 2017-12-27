@@ -60,6 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Commands\DeleteLanguage.cs" />
+    <Compile Include="Commands\DeleteAuthor.cs" />
+    <Compile Include="Commands\SaveLanguage.cs" />
+    <Compile Include="Commands\SaveAuthor.cs" />
     <Compile Include="Commands\SaveBook.cs" />
     <Compile Include="Dto\LanguageDto.cs" />
     <Compile Include="Dto\OwnerDto.cs" />
@@ -81,6 +85,8 @@
     <Compile Include="Mappings\BookMappingRegistration.cs" />
     <Compile Include="Mappings\UserMappingRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\ListLanguages.cs" />
+    <Compile Include="Queries\ListAuthors.cs" />
     <Compile Include="Queries\ListBooks.cs" />
   </ItemGroup>
   <ItemGroup>
