@@ -10,7 +10,7 @@ namespace Nameless.Bookshelf.Entities {
         public string Title { get; set; }
         public string ISBN { get; set; }
         public int Edition { get; set; }
-        public string Year { get; set; }
+        public int Year { get; set; }
         public string Publisher { get; set; }
         public string[] Authors { get; set; }
         public string[] Languages { get; set; }

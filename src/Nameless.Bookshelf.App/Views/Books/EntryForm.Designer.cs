@@ -44,12 +44,15 @@
             this.lentCheckBox = new System.Windows.Forms.CheckBox();
             this.noteLabel = new System.Windows.Forms.Label();
             this.noteTextBox = new System.Windows.Forms.TextBox();
+            this.mainContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.contentPanel.SuspendLayout();
             this.actionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editionNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown)).BeginInit();
+            this.mainContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // titlePanel
@@ -116,6 +119,7 @@
             this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.closeButton.Location = new System.Drawing.Point(704, 20);
             this.closeButton.TabIndex = 12;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // confirmButton
             // 
@@ -169,19 +173,9 @@
             // 
             this.editionNumericUpDown.Location = new System.Drawing.Point(17, 171);
             this.editionNumericUpDown.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
-            this.editionNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.editionNumericUpDown.Name = "editionNumericUpDown";
             this.editionNumericUpDown.Size = new System.Drawing.Size(100, 29);
             this.editionNumericUpDown.TabIndex = 2;
-            this.editionNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // editionLabel
             // 
@@ -212,19 +206,9 @@
             0,
             0,
             0});
-            this.yearNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.yearNumericUpDown.Name = "yearNumericUpDown";
             this.yearNumericUpDown.Size = new System.Drawing.Size(100, 29);
             this.yearNumericUpDown.TabIndex = 3;
-            this.yearNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // publisherLabel
             // 
@@ -266,7 +250,6 @@
             this.authorsListBox.Location = new System.Drawing.Point(428, 79);
             this.authorsListBox.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
             this.authorsListBox.Name = "authorsListBox";
-            this.authorsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.authorsListBox.Size = new System.Drawing.Size(400, 88);
             this.authorsListBox.TabIndex = 7;
             // 
@@ -300,7 +283,6 @@
             this.languagesListBox.Location = new System.Drawing.Point(428, 244);
             this.languagesListBox.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
             this.languagesListBox.Name = "languagesListBox";
-            this.languagesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.languagesListBox.Size = new System.Drawing.Size(400, 88);
             this.languagesListBox.TabIndex = 9;
             // 
@@ -344,8 +326,21 @@
             this.noteTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
             this.noteTextBox.Multiline = true;
             this.noteTextBox.Name = "noteTextBox";
-            this.noteTextBox.Size = new System.Drawing.Size(807, 90);
+            this.noteTextBox.Size = new System.Drawing.Size(811, 90);
             this.noteTextBox.TabIndex = 10;
+            // 
+            // mainContextMenuStrip
+            // 
+            this.mainContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeToolStripMenuItem});
+            this.mainContextMenuStrip.Name = "mainContextMenuStrip";
+            this.mainContextMenuStrip.Size = new System.Drawing.Size(122, 26);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.removeToolStripMenuItem.Text = "Remover";
             // 
             // EntryForm
             // 
@@ -357,6 +352,11 @@
             this.Text = "Livro";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EntryForm_FormClosing);
             this.Load += new System.EventHandler(this.EntryForm_Load);
+            this.Controls.SetChildIndex(this.titlePanel, 0);
+            this.Controls.SetChildIndex(this.topSeparator, 0);
+            this.Controls.SetChildIndex(this.actionPanel, 0);
+            this.Controls.SetChildIndex(this.bottomSeparator, 0);
+            this.Controls.SetChildIndex(this.contentPanel, 0);
             this.titlePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
             this.contentPanel.ResumeLayout(false);
@@ -364,6 +364,7 @@
             this.actionPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.editionNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown)).EndInit();
+            this.mainContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -390,5 +391,7 @@
         private System.Windows.Forms.CheckBox lentCheckBox;
         private System.Windows.Forms.TextBox noteTextBox;
         private System.Windows.Forms.Label noteLabel;
+        private System.Windows.Forms.ContextMenuStrip mainContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
     }
 }

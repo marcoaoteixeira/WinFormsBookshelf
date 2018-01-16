@@ -6,6 +6,7 @@ using Nameless.Bookshelf.Dto;
 using Nameless.Bookshelf.Entities;
 using Nameless.WinFormsApplication;
 using Nameless.WinFormsApplication.Auth;
+using Nameless.WinFormsApplication.Auth.Entities;
 using Nameless.WinFormsApplication.CQRS.Queries;
 using Nameless.WinFormsApplication.ObjectMapper;
 using Nameless.WinFormsApplication.Persistence;
@@ -19,8 +20,8 @@ namespace Nameless.Bookshelf.Queries {
         public string Title { get; set; }
         public string ISBN { get; set; }
         public string Publisher { get; set; }
-        public string Authors { get; set; }
-        public string Languages { get; set; }
+        public string Author { get; set; }
+        public string Language { get; set; }
 
         #endregion Public Properties
     }
@@ -47,25 +48,25 @@ namespace Nameless.Bookshelf.Queries {
         #region Public Override Methods
 
         public override Task<BookDto[]> HandleAsync(ListBooksQuery query, CancellationToken token = default(CancellationToken)) => Task.Run(() => {
-            var books = Repository.Query<Book>();
+            var books = Repository
+                .Query<Book>()
+                .Where(_ =>
+                    (_.Title != null && _.Title.ToLowerInvariant().Contains((query.Title ?? string.Empty).ToLowerInvariant())) &&
+                    (_.ISBN != null && _.ISBN.ToLowerInvariant().Contains((query.ISBN ?? string.Empty).ToLowerInvariant())) &&
+                    (_.Publisher != null && _.Publisher.ToLowerInvariant().Contains((query.Publisher ?? string.Empty).ToLowerInvariant())) &&
+                    (_.Authors != null && _.Authors.Any(author => author.ToLowerInvariant().Contains((query.Author ?? string.Empty).ToLowerInvariant()))) &&
+                    (_.Languages != null && _.Languages.Any(language => language.ToLowerInvariant().Contains((query.Language ?? string.Empty).ToLowerInvariant())))
+                )
+                .OrderBy(_ => _.Title);
 
-            if (!string.IsNullOrWhiteSpace(query.Title)) {
-                books = books.Where(_ => _.Title.IndexOf(query.Title, StringComparison.CurrentCultureIgnoreCase) >= 0);
-            }
-            if (!string.IsNullOrWhiteSpace(query.ISBN)) {
-                books = books.Where(_ => _.ISBN.IndexOf(query.ISBN, StringComparison.CurrentCultureIgnoreCase) >= 0);
-            }
-            if (!string.IsNullOrWhiteSpace(query.Publisher)) {
-                books = books.Where(_ => _.Publisher.IndexOf(query.ISBN, StringComparison.CurrentCultureIgnoreCase) >= 0);
-            }
-            if (!string.IsNullOrWhiteSpace(query.Authors)) {
-                books = books.Where(_ => _.Authors != null && _.Authors.Any(author => author.IndexOf(query.Authors, StringComparison.CurrentCultureIgnoreCase) >= 0));
-            }
-            if (!string.IsNullOrWhiteSpace(query.Languages)) {
-                books = books.Where(_ => _.Languages != null && _.Languages.Any(language => language.IndexOf(query.Languages, StringComparison.CurrentCultureIgnoreCase) >= 0));
-            }
+            var users = Repository
+                .Query<User>()
+                .ToDictionary(_ => _.Username, _ => _.DisplayName);
 
             var result = books.Select(Mapper.Map<BookDto>).ToArray();
+
+            result.Each(_ => _.Owner.Name = users[_.Owner.Identifier]);
+
             return result;
         }, token);
 

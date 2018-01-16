@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Nameless.Bookshelf.Commands;
 using Nameless.Bookshelf.Dto;
 using Nameless.Bookshelf.Queries;
 using Nameless.WinFormsApplication;
@@ -12,10 +13,10 @@ namespace Nameless.Bookshelf.Views.Books {
 
     public partial class ListForm : FormBase {
 
-        #region Private Read-Only Fields
+        #region Private Properties
 
-        private readonly ICommandQueryDispatcher _commandQueryDispatcher;
-        private readonly ViewManager _viewManager;
+        private ICommandQueryDispatcher CommandQueryDispatcher { get; }
+        private ViewManager ViewManager { get; }
 
         #endregion Private Read-Only Fields
 
@@ -25,8 +26,8 @@ namespace Nameless.Bookshelf.Views.Books {
             Prevent.ParameterNull(commandQueryDispatcher, nameof(commandQueryDispatcher));
             Prevent.ParameterNull(viewManager, nameof(viewManager));
 
-            _commandQueryDispatcher = commandQueryDispatcher;
-            _viewManager = viewManager;
+            CommandQueryDispatcher = commandQueryDispatcher;
+            ViewManager = viewManager;
 
             InitializeComponent();
         }
@@ -42,22 +43,36 @@ namespace Nameless.Bookshelf.Views.Books {
 
         private void FillMainDataGridView(string filter = null) {
             ExecuteWithWaitCursor(() => {
-                var datasource = _commandQueryDispatcher
+                var datasource = CommandQueryDispatcher
                     .Query(new ListBooksQuery {
                         Title = filter,
                         ISBN = filter,
                         Publisher = filter,
-                        Authors = filter,
-                        Languages = filter
+                        Author = filter,
+                        Language = filter
                     });
                 mainDataGridView.DataSource = datasource;
             });
         }
 
         private void EditBook(BookDto book) {
+            using (var form = ViewManager.Get<EntryForm>(mdi: null, multipleInstance: false)) {
+                form.Tag = book;
+                form.ShowDialog();
+                FillMainDataGridView();
+            }
         }
 
         private void RemoveBooks(IEnumerable<BookDto> books) {
+            if (DisplayQuestionMessage("Deseja realmente remover os livros selecionados?") == DialogResult.Yes) {
+                ExecuteWithWaitCursor(() => {
+                    foreach (var book in books) {
+                        try { CommandQueryDispatcher.Command(new DeleteBookCommand { ID = book.ID }); }
+                        catch (Exception ex) { DisplayErrorMessage(ex.Message); }
+                    }
+                });
+                FillMainDataGridView();
+            }
         }
 
         #endregion Private Methods
@@ -132,6 +147,14 @@ namespace Nameless.Bookshelf.Views.Books {
                 .Select(_ => _.DataBoundItem as BookDto)
                 .ToArray();
             RemoveBooks(books);
+        }
+
+        private void addBookButton_Click(object sender, EventArgs e) {
+            using (var form = ViewManager.Get<EntryForm>(mdi: null, multipleInstance: false)) {
+                if (form.ShowDialog() == DialogResult.OK) {
+                    FillMainDataGridView();
+                }
+            }
         }
 
         private void closeButton_Click(object sender, EventArgs e) {

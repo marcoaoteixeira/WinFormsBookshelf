@@ -47,19 +47,6 @@ namespace Nameless.Bookshelf.Views {
             ).Show();
         }
 
-        private void publishersToolStripMenuItem_Click(object sender, EventArgs e) {
-        }
-
-        private void authorsToolStripMenuItem_Click(object sender, EventArgs e) {
-            ViewManager.Get<Authors.EntryForm>(
-                mdi: this,
-                multipleInstance: false
-            ).Show();
-        }
-
-        private void languagesToolStripMenuItem_Click(object sender, EventArgs e) {
-        }
-
         private void exitApplicationToolStripMenuItem_Click(object sender, EventArgs e) {
             Close();
         }

@@ -36,6 +36,14 @@
             this.firstToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.removeBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addBookButton = new System.Windows.Forms.Button();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lentDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ownerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
             this.contentPanel.SuspendLayout();
@@ -146,6 +154,15 @@
             this.mainDataGridView.AllowUserToAddRows = false;
             this.mainDataGridView.AllowUserToDeleteRows = false;
             this.mainDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titleDataGridViewTextBoxColumn,
+            this.editionDataGridViewTextBoxColumn,
+            this.authorsDataGridViewTextBoxColumn,
+            this.publisherDataGridViewTextBoxColumn,
+            this.languagesDataGridViewTextBoxColumn,
+            this.lentDataGridViewCheckBoxColumn,
+            this.noteDataGridViewTextBoxColumn,
+            this.ownerDataGridViewTextBoxColumn});
             this.mainDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDataGridView.Location = new System.Drawing.Point(10, 10);
             this.mainDataGridView.Name = "mainDataGridView";
@@ -193,6 +210,65 @@
             this.addBookButton.TabIndex = 3;
             this.addBookButton.Text = "&Adicionar novo livro";
             this.addBookButton.UseVisualStyleBackColor = true;
+            this.addBookButton.Click += new System.EventHandler(this.addBookButton_Click);
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Título";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // editionDataGridViewTextBoxColumn
+            // 
+            this.editionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.editionDataGridViewTextBoxColumn.DataPropertyName = "Edition";
+            this.editionDataGridViewTextBoxColumn.HeaderText = "Edição";
+            this.editionDataGridViewTextBoxColumn.Name = "editionDataGridViewTextBoxColumn";
+            this.editionDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // authorsDataGridViewTextBoxColumn
+            // 
+            this.authorsDataGridViewTextBoxColumn.DataPropertyName = "AuthorsFlatten";
+            this.authorsDataGridViewTextBoxColumn.HeaderText = "Autores";
+            this.authorsDataGridViewTextBoxColumn.Name = "authorsDataGridViewTextBoxColumn";
+            this.authorsDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // publisherDataGridViewTextBoxColumn
+            // 
+            this.publisherDataGridViewTextBoxColumn.DataPropertyName = "Publisher";
+            this.publisherDataGridViewTextBoxColumn.HeaderText = "Editora";
+            this.publisherDataGridViewTextBoxColumn.Name = "publisherDataGridViewTextBoxColumn";
+            this.publisherDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // languagesDataGridViewTextBoxColumn
+            // 
+            this.languagesDataGridViewTextBoxColumn.DataPropertyName = "LanguagesFlatten";
+            this.languagesDataGridViewTextBoxColumn.HeaderText = "Línguas";
+            this.languagesDataGridViewTextBoxColumn.Name = "languagesDataGridViewTextBoxColumn";
+            this.languagesDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // lentDataGridViewCheckBoxColumn
+            // 
+            this.lentDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.lentDataGridViewCheckBoxColumn.DataPropertyName = "Lent";
+            this.lentDataGridViewCheckBoxColumn.HeaderText = "Emprestado?";
+            this.lentDataGridViewCheckBoxColumn.Name = "lentDataGridViewCheckBoxColumn";
+            this.lentDataGridViewCheckBoxColumn.Width = 106;
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "Notas";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            this.noteDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // ownerDataGridViewTextBoxColumn
+            // 
+            this.ownerDataGridViewTextBoxColumn.DataPropertyName = "OwnerName";
+            this.ownerDataGridViewTextBoxColumn.HeaderText = "Dono";
+            this.ownerDataGridViewTextBoxColumn.Name = "ownerDataGridViewTextBoxColumn";
+            this.ownerDataGridViewTextBoxColumn.Width = 200;
             // 
             // ListForm
             // 
@@ -234,5 +310,13 @@
         private System.Windows.Forms.ToolStripSeparator firstToolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem removeBookToolStripMenuItem;
         private System.Windows.Forms.Button addBookButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn editionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authorsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publisherDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn languagesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn lentDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ownerDataGridViewTextBoxColumn;
     }
 }

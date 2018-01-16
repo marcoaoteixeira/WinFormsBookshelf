@@ -45,6 +45,7 @@ namespace Nameless.Bookshelf {
                     new LoggingServiceRegistration(supportAssemblies),
                     new ObjectMapperServiceRegistration(supportAssemblies),
                     new PubSubServiceRegistration(supportAssemblies),
+                    new PersistenceServiceRegistration(supportAssemblies),
                     new SearchServiceRegistration(supportAssemblies),
                     new SecurityServiceRegistration(supportAssemblies),
                     new ApplicationServiceRegistration(supportAssemblies),
